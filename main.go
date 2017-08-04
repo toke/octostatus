@@ -86,7 +86,9 @@ func readConfig(filename string) Config {
 }
 
 func main() {
-	cfg := readConfig("/home/toke/.config/octoclient/config.yml")
+	home := os.Getenv("HOME")
+	cfg := readConfig(home + "/.config/octoclient/config.yml")
+
 	printerID := "default"
 	templateID := "default"
 
