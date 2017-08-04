@@ -118,20 +118,20 @@ func main() {
 	}
 	req, err := http.NewRequest("GET", URL, nil)
 	if err != nil {
-		fmt.Printf("%s", err)
+		fmt.Printf("%s\n", err)
 		os.Exit(1)
 	}
 
 	req.Header.Set("X-Api-Key", APIKEY)
 	response, err := netClient.Do(req)
 	if err != nil {
-		fmt.Printf("%s", err)
+		fmt.Printf("%s\n", err)
 		os.Exit(1)
 	} else {
 		defer response.Body.Close()
 		contents, err := ioutil.ReadAll(response.Body)
 		if err != nil {
-			fmt.Printf("%s", err)
+			fmt.Printf("%s\n", err)
 			os.Exit(1)
 		}
 		//fmt.Printf("%s\n", contents)
