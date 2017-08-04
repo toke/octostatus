@@ -8,6 +8,11 @@ import (
 	yaml "gopkg.in/yaml.v2"
 )
 
+/*Config describes the config file format for octostatus
+
+Top level fields
+Printer and Output map keys currently in use is "default"
+*/
 type Config struct {
 	Name    string                   `yaml:"name"`
 	Version int16                    `yaml:"version"`
@@ -15,11 +20,19 @@ type Config struct {
 	Output  map[string]OutputConfig  `yaml:"output"`
 }
 
+/*PrinterConfig Octoprint URL and Credentials
+
+Mandatory for usage
+*/
 type PrinterConfig struct {
 	BaseURL string `yaml:"baseUrl"`
 	APIKey  string `yaml:"apiKey"`
 }
 
+/*OutputConfig Template(s) for output generation
+
+Mandatory for usage
+*/
 type OutputConfig struct {
 	Template string `yaml:"template"`
 }
