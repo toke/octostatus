@@ -67,7 +67,7 @@ type OutputConfig struct {
 	Template string `yaml:"template"`
 }
 
-func readConfig(filename string) Config {
+func readConfig(filename string) (Config, error) {
 	filepath, err := filepath.Abs(filename)
 	if err != nil {
 		panic(err)
@@ -81,12 +81,20 @@ func readConfig(filename string) Config {
 	if err != nil {
 		panic(err)
 	}
-	return (config)
+
+	if config.Version != 1 {
+		myerr := fmt.Errorf("Unknown configuration version: %d", config.Version)
+		return config, myerr
+	}
+	return config, nil
 }
 
 func main() {
 	home := os.Getenv("HOME")
-	cfg := readConfig(home + "/.config/octoclient/config.yml")
+	cfg, err := readConfig(home + "/.config/octoclient/config.yml")
+	if err != nil {
+		panic(err)
+	}
 
 	printerID := "default"
 	templateID := "default"
