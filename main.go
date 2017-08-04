@@ -60,7 +60,6 @@ type Config struct {
 
 type PrinterConfig struct {
 	BaseURL string `yaml:"baseUrl"`
-	URL     string `yaml:"url"`
 	APIKey  string `yaml:"apiKey"`
 }
 
@@ -92,7 +91,7 @@ func main() {
 	printerID := "default"
 	templateID := "default"
 
-	var URL = cfg.Printer[printerID].URL
+	var URL = cfg.Printer[printerID].BaseURL + "/api/job"
 	var APIKEY = cfg.Printer[printerID].APIKey
 	if URL == "" || APIKEY == "" {
 		fmt.Printf("Error: Missing URL or APIKEY for printer \"%s\"\n", printerID)

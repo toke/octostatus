@@ -27,7 +27,6 @@ version: 1
 printer:
   default:
     baseUrl: http://octoprint.local
-    url: http://octoprint.local/api/job
     apiKey: SECRETSTUFF
 output:
   default:
