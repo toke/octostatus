@@ -145,7 +145,6 @@ func main() {
 		}
 
 		tmpl, err := template.New("output").Parse(cfg.Output[templateID].Template)
-		//tmpl, err := template.New("test").Parse("{{.State}} {{.JobDetail.File.Name}} {{printf \"%.01f\" .Progress.Completion }}% ({{ .Progress.PrintTimeLeftString }})\n")
 		err = tmpl.Execute(os.Stdout, t)
 		fmt.Println("")
 	}
