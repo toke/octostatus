@@ -5,8 +5,8 @@ A very basic Octoprint status display
 ## Installation
 
 ```
-go get github.com/toke/octostatus
-go install github.com/toke/octostatus
+go get github.com/toke/octostatus/octostatus
+go install github.com/toke/octostatus/octostatus
 ```
 
 ## Usage
